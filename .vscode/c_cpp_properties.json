@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "name": "VisualTeensy",
+      "includePath": [
+        "src/**",
+        "C:/Program Files (x86)/Arduino/hardware/teensy/avr/cores/teensy4",
+        "lib/Wire/**",
+        "lib/Audio/**",
+        "lib/Encoder/**",
+        "lib/SPI/**",
+        "lib/SD/**",
+        "lib/SerialFlash/**"
+      ],
+      "forcedInclude": [],
+      "defines": [
+        "__IMXRT1062__",
+        "TEENSYDUINO=153",
+        "ARDUINO_TEENSY40",
+        "F_CPU=600000000",
+        "USB_MIDI",
+        "LAYOUT_US_ENGLISH",
+        "ARDUINO"
+      ],
+      "compilerPath": "C:/PROGRA~2/Arduino/hardware/tools/arm/bin/arm-none-eabi-gcc.exe",
+      "intelliSenseMode": "gcc-x64"
+    }
+  ],
+  "version": 4
+}
