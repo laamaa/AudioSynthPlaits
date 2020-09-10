@@ -11,15 +11,15 @@
       "coreBase": "C:\\Program Files (x86)\\Arduino\\hardware\\teensy\\avr",
       "compilerBase": "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\arm",
       "makefileExtension": null,
-      "copyCore": false,
+      "copyCore": true,
       "sharedLibraries": [],
       "projectLibraries": [
-        "Wire",
         "Audio",
         "Encoder",
-        "SPI",
         "SD",
-        "SerialFlash"
+        "SerialFlash",
+        "SPI",
+        "Wire"
       ],
       "board": {
         "name": "Teensy 4.0",

@@ -5,12 +5,12 @@
       "includePath": [
         "src/**",
         "C:/Program Files (x86)/Arduino/hardware/teensy/avr/cores/teensy4",
-        "lib/Wire/**",
         "lib/Audio/**",
         "lib/Encoder/**",
-        "lib/SPI/**",
         "lib/SD/**",
-        "lib/SerialFlash/**"
+        "lib/SerialFlash/**",
+        "lib/SPI/**",
+        "lib/Wire/**"
       ],
       "forcedInclude": [],
       "defines": [

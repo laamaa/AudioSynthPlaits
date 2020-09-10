@@ -7,7 +7,7 @@
 # Optimize           Faster
 # Keyboard Layout    US English
 #
-# 09/09/2020 21.24
+# 10/09/2020 15.04
 #******************************************************************************
 SHELL            := cmd.exe
 export SHELL
@@ -21,11 +21,12 @@ LIBS_SHARED_BASE := C:\Users\hipho\Documents\Arduino\libraries
 LIBS_SHARED      := 
 
 LIBS_LOCAL_BASE  := lib
-LIBS_LOCAL       := Wire Audio Encoder SPI SD SerialFlash 
+LIBS_LOCAL       := Audio Encoder SD SerialFlash SPI Wire 
 
-CORE_BASE        := C:\PROGRA~2\Arduino\hardware\teensy\avr\cores\teensy4
+CORE_BASE        := core
 GCC_BASE         := C:\PROGRA~2\Arduino\hardware\tools\arm\bin
 UPL_PJRC_B       := C:\PROGRA~2\Arduino\hardware\tools
+UPL_TYCMD_B      := C:\PROGRA~1\TyTools
 
 #******************************************************************************
 # Flags and Defines

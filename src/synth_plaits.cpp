@@ -14,7 +14,11 @@ void AudioSynthPlaits::update(void)
 	block = allocate();
 	if (block == NULL) return;
 
-	voice.Render(patch, modulations, (Voice::Frame*)(block->data), AUDIO_BLOCK_SAMPLES);
+	Voice::Frame out[AUDIO_BLOCK_SAMPLES];
+	voice.Render(patch, modulations, out, AUDIO_BLOCK_SAMPLES);
+	for (int i=0; i<AUDIO_BLOCK_SAMPLES; i++) {
+		block->data[i]=out[i].out;
+	}
 	transmit(block, 0);
 	release(block);
 	return;

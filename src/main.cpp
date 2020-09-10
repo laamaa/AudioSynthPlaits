@@ -6,25 +6,25 @@
 #include "Audio.h"
 
 AudioSynthPlaits         synthPlaits;
-AudioMixer4              mix1;
 AudioOutputI2S           i2s1;
-AudioConnection          patchCord1(synthPlaits, 0, mix1, 0);
-AudioConnection          patchCord2(mix1, 0, i2s1, 0);
-AudioConnection          patchCord3(mix1, 0, i2s1, 1);
-
-AudioControlSGTL5000     sgtl5000_1;
+AudioConnection          patchCord1(synthPlaits, 0, i2s1, 0);
+AudioConnection          patchCord2(synthPlaits, 0, i2s1, 1);
 
 IntervalTimer			myTimer;
 
 // Handles note on events
-void OnNoteOn(byte channel, byte note, byte velocity){
+void OnNoteOn(byte channel, byte midinote, byte velocity){
     // If the velocity is larger than zero, means that is turning on
-
+  if (velocity)
+    synthPlaits.setPatchParameter(note,(float)midinote);
 }
 
-void makeSomeNoise()
-{
-  Serial.println("Still alive");
+void testModulate(){
+  if (synthPlaits.getModulationsParameter(trigger) == 0.0f) {
+    synthPlaits.setModulationsParameter(trigger, 1.0f);
+  } else {
+    synthPlaits.setModulationsParameter(trigger,0.0f);
+  }
 }
 
 //************SETUP**************
@@ -36,10 +36,12 @@ void setup() {
   AudioMemory(5);
 
   usbMIDI.setHandleNoteOn(OnNoteOn);
-  myTimer.begin(makeSomeNoise, 10000);
+  myTimer.begin(testModulate,200000);
+
+  synthPlaits.setPatchParameter(engine,0.0f);
 }
 
 //************LOOP**************
 void loop() {
-    usbMIDI.read();
+  usbMIDI.read();
 }
