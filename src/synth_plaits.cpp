@@ -7,19 +7,22 @@ using namespace stmlib;
 
 void AudioSynthPlaits::update(void)
 {
-	audio_block_t *block;
-	uint8_t sync_buffer[AUDIO_BLOCK_SAMPLES]; 
+	audio_block_t *blockOutMain;
+	audio_block_t *blockOutAux;
 
-	memset(sync_buffer, 0, sizeof(sync_buffer));
-	block = allocate();
-	if (block == NULL) return;
+	blockOutMain = allocate();
+	blockOutAux = allocate();
+	if (blockOutMain == NULL || blockOutAux == NULL) return;
 
 	Voice::Frame out[AUDIO_BLOCK_SAMPLES];
 	voice.Render(patch, modulations, out, AUDIO_BLOCK_SAMPLES);
 	for (int i=0; i<AUDIO_BLOCK_SAMPLES; i++) {
-		block->data[i]=out[i].out;
+		blockOutMain->data[i]=out[i].out;
+		blockOutAux->data[i]=out[i].aux;
 	}
-	transmit(block, 0);
-	release(block);
+	transmit(blockOutMain, 0);
+	transmit(blockOutAux, 1);
+	release(blockOutMain);
+	release(blockOutAux);
 	return;
 }

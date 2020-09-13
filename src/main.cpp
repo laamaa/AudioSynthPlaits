@@ -7,8 +7,8 @@
 
 AudioSynthPlaits         synthPlaits;
 AudioOutputI2S           i2s1;
-AudioConnection          patchCord1(synthPlaits, 0, i2s1, 0);
-AudioConnection          patchCord2(synthPlaits, 0, i2s1, 1);
+AudioConnection          patchCord1(synthPlaits, 0, i2s1, 0); //Output 0 = main
+AudioConnection          patchCord2(synthPlaits, 1, i2s1, 1); //Output 1 = aux
 
 IntervalTimer			myTimer;
 
